@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { ExternalLink, Github } from "lucide-react";
 import Section from "@/components/ui/Section";
-import { jobs, process as steps, profile, projects, skills } from "@/data/portfolio";
+import { jobs, process as steps, profile, certifications, projects, skills } from "@/data/portfolio";
 
 export function About() {
   return (
@@ -32,6 +32,29 @@ export function Skills() {
   );
 }
 
+export function Certifications() {
+  return (
+    <Section id="certifications" title="Certifications">
+      <div className="grid gap-6 md:grid-cols-2">
+        {certifications.map((p) => (
+          <article key={p.title} className="overflow-hidden rounded-lg border border-line bg-bg2 transition-colors hover:border-violet">
+            <Image src={p.image} alt={`${p.title} preview`} width={800} height={500} className="h-auto w-full" />
+            <div className="p-6">
+              <h3 className="font-display text-xl">{p.title}</h3>
+              <p className="mt-2 text-muted">{p.description}</p>
+              <ul className="mt-4 flex flex-wrap gap-3">{p.tags.map((t) => <li key={t} className="font-mono text-xs text-cyan">{t}</li>)}</ul>
+              {/* <div className="mt-5 flex gap-5 text-sm">
+                {p.live && <a href={p.live} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 hover:text-cyan"><ExternalLink size={15} />Live demo</a>}
+                {p.github && <a href={p.github} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 hover:text-cyan"><Github size={15} />Source</a>}
+              </div> */}
+            </div>
+          </article>
+        ))}
+      </div>
+    </Section>
+  );
+}
+
 export function Projects() {
   return (
     <Section id="projects" title="Projects">
@@ -43,10 +66,10 @@ export function Projects() {
               <h3 className="font-display text-xl">{p.title}</h3>
               <p className="mt-2 text-muted">{p.description}</p>
               <ul className="mt-4 flex flex-wrap gap-3">{p.tags.map((t) => <li key={t} className="font-mono text-xs text-cyan">{t}</li>)}</ul>
-              <div className="mt-5 flex gap-5 text-sm">
+              {/* <div className="mt-5 flex gap-5 text-sm">
                 {p.live && <a href={p.live} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 hover:text-cyan"><ExternalLink size={15} />Live demo</a>}
                 {p.github && <a href={p.github} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 hover:text-cyan"><Github size={15} />Source</a>}
-              </div>
+              </div> */}
             </div>
           </article>
         ))}
